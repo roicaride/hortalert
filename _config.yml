@@ -1,0 +1,5 @@
+theme: jekyll-theme-cayman
+title: HortAlert
+description: Smart Irrigation System for Modern Agriculture
+baseurl: "/hortalert"
+url: "https://roicaride.github.io" 

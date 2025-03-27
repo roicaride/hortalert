@@ -1,14 +1,18 @@
-# HortAlert - Irrigation Prediction System
+# HortAlert
 
-HortAlert is an intelligent irrigation prediction system that helps farmers optimize crop irrigation based on real-time data and weather forecasts.
+HortAlert is an intelligent irrigation prediction system designed to optimize crop management through data-driven decisions.
+
+## Website
+
+Visit our website: [https://roicaride.github.io/hortalert](https://roicaride.github.io/hortalert)
 
 ## Features
 
-- Real-time dashboard with sensor data
-- Weather and irrigation predictions
-- Detailed history of data and events
-- Smart alerts
-- Intuitive and responsive interface
+- **Smart Crop Management**: Real-time monitoring of crop health and growth
+- **Optimized Irrigation**: AI-powered irrigation predictions
+- **Data-Driven Decisions**: Advanced analytics and historical data tracking
+- **Weather Integration**: Real-time weather data and forecasts
+- **Mobile Ready**: Responsive design for monitoring from any device
 
 ## Technologies Used
 
@@ -16,27 +20,33 @@ HortAlert is an intelligent irrigation prediction system that helps farmers opti
 - CSS3
 - JavaScript
 - Chart.js for data visualization
-- Font Awesome for icons
+- jsPDF for report generation
 
 ## Installation
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/hortalert.git
+git clone https://github.com/roicaride/hortalert.git
 ```
 
-2. Open `dashboard.html` in your browser
+2. Open index.html in your browser
 
-## Usage
+## Development
 
-- The dashboard shows current crop status
-- The predictions page displays forecasts and irrigation scheduling
-- The history page allows viewing historical data and trends
+To contribute to this project:
 
-## Contributing
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-Contributions are welcome. Please open an issue first to discuss what you would like to change.
+## Contact
+
+- Email: roicaride4@gmail.com
+- LinkedIn: [Roi Caride Borrajo](https://www.linkedin.com/in/roi-caride-borrajo-1167a4227)
+- Telegram: @roicaride
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
+© 2024 HortAlert. All rights reserved. 
