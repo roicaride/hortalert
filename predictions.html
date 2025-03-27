@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predictions - HortAlert</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="dashboard.html">
+                <img src="logo.png" alt="HortAlert Logo" class="logo-img">
+                <span>HortAlert</span>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Dashboard</a>
+            <a href="predictions.html" class="active">Predictions</a>
+            <a href="history.html">History</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="dashboard">
+            <div class="predictions-header">
+                <div class="header-content">
+                    <h2><i class="fas fa-chart-line"></i> Crop Predictions</h2>
+                    <p class="subtitle">Forecast and analysis for optimal crop management</p>
+                </div>
+                <div class="predictions-filters">
+                    <div class="date-selector">
+                        <button class="btn-tiempo active" data-tiempo="today">
+                            <i class="fas fa-calendar-day"></i>
+                            Today
+                        </button>
+                        <button class="btn-tiempo" data-tiempo="tomorrow">
+                            <i class="fas fa-calendar-alt"></i>
+                            Tomorrow
+                        </button>
+                        <button class="btn-tiempo" data-tiempo="week">
+                            <i class="fas fa-calendar-week"></i>
+                            Next 7 Days
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="predictions-grid">
+                <!-- Weather Forecast -->
+                <div class="prediction-card weather">
+                    <div class="card-header">
+                        <h3><i class="fas fa-cloud-sun"></i> Weather Forecast</h3>
+                        <div class="card-actions">
+                            <button class="action-icon" title="Refresh">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                            <button class="action-icon" title="View Details">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="weather-grid">
+                        <div class="weather-item">
+                            <div class="weather-icon">
+                                <i class="fas fa-sun"></i>
+                            </div>
+                            <div class="weather-info">
+                                <div class="weather-date">Today</div>
+                                <div class="weather-temp">25°C</div>
+                                <div class="weather-desc">Sunny</div>
+                                <div class="weather-details">
+                                    <span><i class="fas fa-tint"></i> 45%</span>
+                                    <span><i class="fas fa-wind"></i> 12 km/h</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="weather-item">
+                            <div class="weather-icon">
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                            <div class="weather-info">
+                                <div class="weather-date">Tomorrow</div>
+                                <div class="weather-temp">22°C</div>
+                                <div class="weather-desc">Partly Cloudy</div>
+                                <div class="weather-details">
+                                    <span><i class="fas fa-tint"></i> 55%</span>
+                                    <span><i class="fas fa-wind"></i> 15 km/h</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Irrigation Prediction -->
+                <div class="prediction-card irrigation">
+                    <div class="card-header">
+                        <h3><i class="fas fa-tint"></i> Irrigation Schedule</h3>
+                        <div class="card-actions">
+                            <button class="action-icon" title="Add Schedule">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <button class="action-icon" title="View Calendar">
+                                <i class="fas fa-calendar"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="irrigation-timeline">
+                        <div class="irrigation-item">
+                            <div class="irrigation-time">
+                                <span class="time">09:00 AM</span>
+                                <span class="status pending">Pending</span>
+                            </div>
+                            <div class="irrigation-content">
+                                <div class="irrigation-icon">
+                                    <i class="fas fa-tint"></i>
+                                </div>
+                                <div class="irrigation-details">
+                                    <div class="irrigation-title">Morning Irrigation</div>
+                                    <div class="irrigation-desc">
+                                        <span><i class="fas fa-clock"></i> 30 minutes</span>
+                                        <span><i class="fas fa-tint"></i> 2.5L</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="irrigation-item">
+                            <div class="irrigation-time">
+                                <span class="time">03:00 PM</span>
+                                <span class="status pending">Pending</span>
+                            </div>
+                            <div class="irrigation-content">
+                                <div class="irrigation-icon">
+                                    <i class="fas fa-tint"></i>
+                                </div>
+                                <div class="irrigation-details">
+                                    <div class="irrigation-title">Afternoon Irrigation</div>
+                                    <div class="irrigation-desc">
+                                        <span><i class="fas fa-clock"></i> 25 minutes</span>
+                                        <span><i class="fas fa-tint"></i> 2.0L</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Health Prediction -->
+                <div class="prediction-card health">
+                    <div class="card-header">
+                        <h3><i class="fas fa-heartbeat"></i> Health Forecast</h3>
+                        <div class="card-actions">
+                            <button class="action-icon" title="View Report">
+                                <i class="fas fa-file-medical"></i>
+                            </button>
+                            <button class="action-icon" title="Settings">
+                                <i class="fas fa-cog"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="health-status">
+                        <div class="health-indicator good">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Optimal Health</span>
+                        </div>
+                        <div class="health-metrics">
+                            <div class="metric">
+                                <div class="metric-header">
+                                    <span class="metric-label">Moisture</span>
+                                    <span class="metric-value">75%</span>
+                                </div>
+                                <div class="metric-bar">
+                                    <div class="metric-fill" style="width: 75%"></div>
+                                </div>
+                                <div class="metric-range">
+                                    <span>40%</span>
+                                    <span>80%</span>
+                                </div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-header">
+                                    <span class="metric-label">pH Level</span>
+                                    <span class="metric-value">6.7</span>
+                                </div>
+                                <div class="metric-bar">
+                                    <div class="metric-fill" style="width: 65%"></div>
+                                </div>
+                                <div class="metric-range">
+                                    <span>6.0</span>
+                                    <span>7.5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alerts -->
+                <div class="prediction-card alerts">
+                    <div class="card-header">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Potential Alerts</h3>
+                        <div class="card-actions">
+                            <button class="action-icon" title="Mark All Read">
+                                <i class="fas fa-check-double"></i>
+                            </button>
+                            <button class="action-icon" title="Settings">
+                                <i class="fas fa-cog"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="alerts-list">
+                        <div class="alert-item warning">
+                            <div class="alert-icon">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </div>
+                            <div class="alert-content">
+                                <div class="alert-header">
+                                    <div class="alert-title">High Temperature Warning</div>
+                                    <div class="alert-time">2 hours ago</div>
+                                </div>
+                                <div class="alert-desc">Temperature expected to reach 28°C tomorrow</div>
+                                <div class="alert-actions">
+                                    <button class="alert-btn">View Details</button>
+                                    <button class="alert-btn">Dismiss</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert-item info">
+                            <div class="alert-icon">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                            <div class="alert-content">
+                                <div class="alert-header">
+                                    <div class="alert-title">Maintenance Reminder</div>
+                                    <div class="alert-time">1 day ago</div>
+                                </div>
+                                <div class="alert-desc">Sensor calibration due in 2 days</div>
+                                <div class="alert-actions">
+                                    <button class="alert-btn">Schedule</button>
+                                    <button class="alert-btn">Dismiss</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="predictions.js"></script>
+</body>
+</html> 

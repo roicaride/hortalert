@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HortAlert - Irrigation Prediction System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="dashboard.html">
+                <img src="logo.png" alt="HortAlert Logo" class="logo-img">
+                <span>HortAlert</span>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="active">Dashboard</a>
+            <a href="predictions.html">Predictions</a>
+            <a href="history.html">History</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="dashboard">
+            <div class="header-info">
+                <div class="cultivo-info">
+                    <h2><i class="fas fa-seedling"></i> Crop Status</h2>
+                    <div class="crop-details">
+                        <div class="crop-header">
+                            <div class="crop-name">
+                                <h3>Tomato Plant</h3>
+                                <span class="crop-stage">Growth Stage: Flowering</span>
+                            </div>
+                            <div class="crop-health">
+                                <div class="health-indicator">
+                                    <i class="fas fa-heartbeat"></i>
+                                    <span>95%</span>
+                                </div>
+                                <div class="health-status">Excellent Health</div>
+                            </div>
+                        </div>
+                        
+                        <div class="crop-metrics">
+                            <div class="metric-card">
+                                <div class="metric-icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <div class="metric-info">
+                                    <span class="metric-label">Days Since Planting</span>
+                                    <span class="metric-value">45</span>
+                                </div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-icon">
+                                    <i class="fas fa-ruler-vertical"></i>
+                                </div>
+                                <div class="metric-info">
+                                    <span class="metric-label">Plant Height</span>
+                                    <span class="metric-value">1.2m</span>
+                                </div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-icon">
+                                    <i class="fas fa-leaf"></i>
+                                </div>
+                                <div class="metric-info">
+                                    <span class="metric-label">Leaf Count</span>
+                                    <span class="metric-value">24</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="crop-progress">
+                            <div class="progress-section">
+                                <div class="progress-header">
+                                    <span>Growth Progress</span>
+                                    <span>75%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-section">
+                                <div class="progress-header">
+                                    <span>Expected Yield</span>
+                                    <span>8.5 kg</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="crop-actions">
+                            <button class="action-btn">
+                                <i class="fas fa-camera"></i>
+                                Take Photo
+                            </button>
+                            <button class="action-btn">
+                                <i class="fas fa-clipboard-list"></i>
+                                Add Note
+                            </button>
+                            <button class="action-btn">
+                                <i class="fas fa-chart-line"></i>
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clima-info">
+                    <h2>Weather Conditions</h2>
+                    <div class="clima-card">
+                        <div class="clima-datos">
+                            <div class="clima-item">
+                                <i class="fas fa-sun"></i>
+                                <span class="valor">24°C</span>
+                                <span class="label">Temperature</span>
+                            </div>
+                            <div class="clima-item">
+                                <i class="fas fa-cloud"></i>
+                                <span class="valor">45%</span>
+                                <span class="label">Ambient Humidity</span>
+                            </div>
+                            <div class="clima-item">
+                                <i class="fas fa-wind"></i>
+                                <span class="valor">12 km/h</span>
+                                <span class="label">Wind</span>
+                            </div>
+                        </div>
+                        <div class="pronostico">
+                            <h3>24h Forecast</h3>
+                            <div class="pronostico-grid">
+                                <div class="pronostico-item">
+                                    <span class="hora">12:00</span>
+                                    <i class="fas fa-sun"></i>
+                                    <span class="temp">26°C</span>
+                                </div>
+                                <div class="pronostico-item">
+                                    <span class="hora">18:00</span>
+                                    <i class="fas fa-cloud-sun"></i>
+                                    <span class="temp">22°C</span>
+                                </div>
+                                <div class="pronostico-item">
+                                    <span class="hora">00:00</span>
+                                    <i class="fas fa-moon"></i>
+                                    <span class="temp">18°C</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sensores">
+                <h2>Real-Time Data</h2>
+                <div class="sensores-grid">
+                    <div class="sensor-card">
+                        <i class="fas fa-tint"></i>
+                        <h3>Soil Moisture</h3>
+                        <div class="valor">65%</div>
+                        <div class="tendencia positiva">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>2.5%</span>
+                        </div>
+                        <div class="rango-optimo">
+                            <span class="min">40%</span>
+                            <div class="barra">
+                                <div class="progreso" style="width: 65%"></div>
+                            </div>
+                            <span class="max">80%</span>
+                        </div>
+                    </div>
+                    <div class="sensor-card">
+                        <i class="fas fa-flask"></i>
+                        <h3>pH</h3>
+                        <div class="valor">6.8</div>
+                        <div class="tendencia neutral">
+                            <i class="fas fa-minus"></i>
+                            <span>0.0</span>
+                        </div>
+                        <div class="rango-optimo">
+                            <span class="min">6.0</span>
+                            <div class="barra">
+                                <div class="progreso" style="width: 80%"></div>
+                            </div>
+                            <span class="max">7.5</span>
+                        </div>
+                    </div>
+                    <div class="sensor-card">
+                        <i class="fas fa-percentage"></i>
+                        <h3>Salinity</h3>
+                        <div class="valor">1.2 mS/cm</div>
+                        <div class="tendencia negativa">
+                            <i class="fas fa-arrow-down"></i>
+                            <span>0.3</span>
+                        </div>
+                        <div class="rango-optimo">
+                            <span class="min">0.8</span>
+                            <div class="barra">
+                                <div class="progreso" style="width: 60%"></div>
+                            </div>
+                            <span class="max">2.0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="graficas">
+                <div class="graficas-header">
+                    <h2>Data History</h2>
+                    <div class="filtros-tiempo">
+                        <button class="btn-tiempo active" data-tiempo="24h">24h</button>
+                        <button class="btn-tiempo" data-tiempo="7d">7 days</button>
+                        <button class="btn-tiempo" data-tiempo="30d">30 days</button>
+                    </div>
+                </div>
+                <div class="graficas-grid">
+                    <div class="grafica-card">
+                        <div class="grafica-header">
+                            <h3>Soil Moisture</h3>
+                            <div class="grafica-leyenda">
+                                <span class="leyenda-item">
+                                    <span class="color actual"></span>
+                                    Current
+                                </span>
+                                <span class="leyenda-item">
+                                    <span class="color optimo"></span>
+                                    Optimal
+                                </span>
+                            </div>
+                        </div>
+                        <canvas id="humedadChart"></canvas>
+                    </div>
+                    <div class="grafica-card">
+                        <div class="grafica-header">
+                            <h3>pH</h3>
+                            <div class="grafica-leyenda">
+                                <span class="leyenda-item">
+                                    <span class="color actual"></span>
+                                    Current
+                                </span>
+                                <span class="leyenda-item">
+                                    <span class="color optimo"></span>
+                                    Optimal
+                                </span>
+                            </div>
+                        </div>
+                        <canvas id="phChart"></canvas>
+                    </div>
+                    <div class="grafica-card">
+                        <div class="grafica-header">
+                            <h3>Salinity</h3>
+                            <div class="grafica-leyenda">
+                                <span class="leyenda-item">
+                                    <span class="color actual"></span>
+                                    Current
+                                </span>
+                                <span class="leyenda-item">
+                                    <span class="color optimo"></span>
+                                    Optimal
+                                </span>
+                            </div>
+                        </div>
+                        <canvas id="salinidadChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="predicciones">
+                <h2>Predictions and Alerts</h2>
+                <div class="predicciones-grid">
+                    <div class="prediccion-card">
+                        <h3>Upcoming Irrigations</h3>
+                        <div class="prediccion-lista">
+                            <div class="prediccion-item">
+                                <div class="hora">12:00</div>
+                                <div class="detalles">
+                                    <span class="duracion">15 minutes</span>
+                                    <span class="cantidad">2.5L</span>
+                                </div>
+                                <div class="estado pendiente">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                            </div>
+                            <div class="prediccion-item">
+                                <div class="hora">18:00</div>
+                                <div class="detalles">
+                                    <span class="duracion">20 minutes</span>
+                                    <span class="cantidad">3.2L</span>
+                                </div>
+                                <div class="estado pendiente">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prediccion-card">
+                        <h3>Alerts</h3>
+                        <div class="alertas-lista">
+                            <div class="alerta-item">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <div class="alerta-contenido">
+                                    <span class="alerta-titulo">Low pH</span>
+                                    <span class="alerta-descripcion">The pH is decreasing, consider adjustment</span>
+                                </div>
+                            </div>
+                            <div class="alerta-item">
+                                <i class="fas fa-info-circle"></i>
+                                <div class="alerta-contenido">
+                                    <span class="alerta-titulo">High Temperature</span>
+                                    <span class="alerta-descripcion">Consider additional shade</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html> 

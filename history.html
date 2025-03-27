@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History - HortAlert</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="dashboard.html">
+                <img src="logo.png" alt="HortAlert Logo" class="logo-img">
+                <span>HortAlert</span>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Dashboard</a>
+            <a href="predictions.html">Predictions</a>
+            <a href="history.html" class="active">History</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="dashboard">
+            <div class="history-header">
+                <h2>Crop History</h2>
+                <div class="history-filters">
+                    <div class="date-range">
+                        <input type="date" id="startDate" value="2024-01-01">
+                        <span>to</span>
+                        <input type="date" id="endDate" value="2024-03-25">
+                    </div>
+                    <div class="periodo-selector">
+                        <button class="btn-tiempo active" data-tiempo="7d">7 days</button>
+                        <button class="btn-tiempo" data-tiempo="14d">14 days</button>
+                        <button class="btn-tiempo" data-tiempo="30d">30 days</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="history-grid">
+                <!-- Historical Summary -->
+                <div class="history-card summary">
+                    <h3><i class="fas fa-chart-line"></i> Historical Summary</h3>
+                    <div class="summary-grid">
+                        <div class="summary-item">
+                            <div class="summary-icon">
+                                <i class="fas fa-tint"></i>
+                            </div>
+                            <div class="summary-content">
+                                <div class="summary-title">Average Moisture</div>
+                                <div class="summary-value">72%</div>
+                                <div class="summary-trend positive">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span>+3% from last week</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-icon">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <div class="summary-content">
+                                <div class="summary-title">Average pH</div>
+                                <div class="summary-value">6.5</div>
+                                <div class="summary-trend neutral">
+                                    <i class="fas fa-minus"></i>
+                                    <span>Stable</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-icon">
+                                <i class="fas fa-percentage"></i>
+                            </div>
+                            <div class="summary-content">
+                                <div class="summary-title">Average Salinity</div>
+                                <div class="summary-value">1.2 mS/cm</div>
+                                <div class="summary-trend negative">
+                                    <i class="fas fa-arrow-down"></i>
+                                    <span>-0.3 from last week</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-icon">
+                                <i class="fas fa-temperature-high"></i>
+                            </div>
+                            <div class="summary-content">
+                                <div class="summary-title">Average Temperature</div>
+                                <div class="summary-value">24.5°C</div>
+                                <div class="summary-trend positive">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span>+2°C from last week</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-icon">
+                                <i class="fas fa-wind"></i>
+                            </div>
+                            <div class="summary-content">
+                                <div class="summary-title">Average Wind Speed</div>
+                                <div class="summary-value">12 km/h</div>
+                                <div class="summary-trend neutral">
+                                    <i class="fas fa-minus"></i>
+                                    <span>Stable</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-icon">
+                                <i class="fas fa-cloud-rain"></i>
+                            </div>
+                            <div class="summary-content">
+                                <div class="summary-title">Total Rainfall</div>
+                                <div class="summary-value">45mm</div>
+                                <div class="summary-trend positive">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span>+15mm from last week</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Historical Events -->
+                <div class="history-card events">
+                    <h3><i class="fas fa-calendar-alt"></i> Historical Events</h3>
+                    <div class="events-timeline">
+                        <div class="event-item">
+                            <div class="event-date">Mar 25, 2024</div>
+                            <div class="event-content">
+                                <div class="event-icon irrigation">
+                                    <i class="fas fa-tint"></i>
+                                </div>
+                                <div class="event-details">
+                                    <div class="event-title">Irrigation Cycle</div>
+                                    <div class="event-description">Duration: 30 minutes, Volume: 2.5L</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-date">Mar 24, 2024</div>
+                            <div class="event-content">
+                                <div class="event-icon alert">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <div class="event-details">
+                                    <div class="event-title">High Temperature Alert</div>
+                                    <div class="event-description">Temperature reached 28°C</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-date">Mar 23, 2024</div>
+                            <div class="event-content">
+                                <div class="event-icon maintenance">
+                                    <i class="fas fa-wrench"></i>
+                                </div>
+                                <div class="event-details">
+                                    <div class="event-title">System Maintenance</div>
+                                    <div class="event-description">Sensor calibration performed</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Historical Charts -->
+                <div class="history-card charts">
+                    <h3><i class="fas fa-chart-bar"></i> Historical Trends</h3>
+                    <div class="charts-grid">
+                        <div class="chart-container">
+                            <div class="chart-header">
+                                <h4>Moisture Trend</h4>
+                                <div class="chart-legend">
+                                    <span class="legend-item">
+                                        <span class="color actual"></span>
+                                        Actual
+                                    </span>
+                                    <span class="legend-item">
+                                        <span class="color average"></span>
+                                        Average
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="chart-content">
+                                <div class="bar-chart">
+                                    <div class="bar" style="height: 65%;">
+                                        <span class="bar-value">65%</span>
+                                    </div>
+                                    <div class="bar" style="height: 70%;">
+                                        <span class="bar-value">70%</span>
+                                    </div>
+                                    <div class="bar" style="height: 68%;">
+                                        <span class="bar-value">68%</span>
+                                    </div>
+                                    <div class="bar" style="height: 72%;">
+                                        <span class="bar-value">72%</span>
+                                    </div>
+                                    <div class="bar" style="height: 65%;">
+                                        <span class="bar-value">65%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <div class="chart-header">
+                                <h4>pH Trend</h4>
+                                <div class="chart-legend">
+                                    <span class="legend-item">
+                                        <span class="color actual"></span>
+                                        Actual
+                                    </span>
+                                    <span class="legend-item">
+                                        <span class="color average"></span>
+                                        Average
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="chart-content">
+                                <div class="bar-chart">
+                                    <div class="bar" style="height: 67%;">
+                                        <span class="bar-value">6.7</span>
+                                    </div>
+                                    <div class="bar" style="height: 68%;">
+                                        <span class="bar-value">6.8</span>
+                                    </div>
+                                    <div class="bar" style="height: 67%;">
+                                        <span class="bar-value">6.7</span>
+                                    </div>
+                                    <div class="bar" style="height: 69%;">
+                                        <span class="bar-value">6.9</span>
+                                    </div>
+                                    <div class="bar" style="height: 68%;">
+                                        <span class="bar-value">6.8</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Export Options -->
+                <div class="history-card export">
+                    <h3><i class="fas fa-download"></i> Export Data</h3>
+                    <div class="export-options">
+                        <button class="export-btn">
+                            <i class="fas fa-file-csv"></i>
+                            Export CSV
+                        </button>
+                        <button class="export-btn">
+                            <i class="fas fa-file-excel"></i>
+                            Export Excel
+                        </button>
+                        <button class="export-btn">
+                            <i class="fas fa-file-pdf"></i>
+                            Export PDF
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="history.js"></script>
+</body>
+</html> 
