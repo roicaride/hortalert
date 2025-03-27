@@ -44,6 +44,9 @@ class HistoryManager {
         document.querySelectorAll('.export-btn').forEach(btn => {
             btn.addEventListener('click', () => this.handleExport(btn));
         });
+
+        // Add export PDF button listener
+        document.getElementById('exportPDF').addEventListener('click', () => this.generatePDF());
     }
 
     setDefaultDateRange() {
@@ -294,6 +297,154 @@ class HistoryManager {
                 notification.remove();
             }, 300);
         }, 3000);
+    }
+
+    async generatePDF() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF('p', 'mm', 'a4');
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const pageHeight = doc.internal.pageSize.getHeight();
+        const margin = 20;
+        const contentWidth = pageWidth - (margin * 2);
+        const contentHeight = pageHeight - (margin * 2);
+
+        // Add header with logo
+        doc.setFontSize(24);
+        doc.setTextColor(46, 204, 113); // Green color
+        doc.text('HortAlert', margin, margin + 10);
+        doc.setFontSize(16);
+        doc.text('Historical Report', margin, margin + 20);
+
+        // Add date range
+        doc.setFontSize(12);
+        doc.setTextColor(0, 0, 0);
+        const startDate = this.startDateInput.value;
+        const endDate = this.endDateInput.value;
+        doc.text(`Period: ${new Date(startDate).toLocaleDateString()} - ${new Date(endDate).toLocaleDateString()}`, margin, margin + 30);
+
+        // Add summary section with background
+        doc.setFillColor(236, 240, 241);
+        doc.rect(margin, margin + 35, contentWidth, 60, 'F');
+        
+        doc.setFontSize(16);
+        doc.setTextColor(44, 62, 80);
+        doc.text('Summary', margin + 5, margin + 45);
+
+        // Add summary items in a grid
+        doc.setFontSize(12);
+        const summaryItems = document.querySelectorAll('.summary-item');
+        let xPos = margin + 5;
+        let yPos = margin + 55;
+        let itemsPerRow = 2;
+        let itemWidth = (contentWidth - 10) / itemsPerRow;
+
+        summaryItems.forEach((item, index) => {
+            const title = item.querySelector('.summary-title').textContent;
+            const value = item.querySelector('.summary-value').textContent;
+            const trend = item.querySelector('.summary-trend').textContent;
+            
+            // Calculate position
+            const row = Math.floor(index / itemsPerRow);
+            const col = index % itemsPerRow;
+            xPos = margin + 5 + (col * itemWidth);
+            yPos = margin + 55 + (row * 25);
+
+            // Add item with icon
+            doc.text(title, xPos, yPos);
+            doc.setFontSize(14);
+            doc.text(value, xPos, yPos + 7);
+            doc.setFontSize(10);
+            doc.setTextColor(128, 128, 128);
+            doc.text(trend, xPos, yPos + 14);
+        });
+
+        // Add charts section
+        yPos = margin + 105;
+        doc.setFontSize(16);
+        doc.setTextColor(44, 62, 80);
+        doc.text('Historical Trends', margin, yPos);
+        yPos += 15;
+
+        // Create and add charts
+        const charts = document.querySelectorAll('.chart-container');
+        for (const chart of charts) {
+            const title = chart.querySelector('h4').textContent;
+            const canvas = chart.querySelector('canvas');
+            
+            if (canvas) {
+                // Add chart title
+                doc.setFontSize(14);
+                doc.setTextColor(44, 62, 80);
+                doc.text(title, margin, yPos);
+                yPos += 10;
+
+                // Convert chart to image
+                const imgData = canvas.toDataURL('image/png');
+                const imgWidth = contentWidth;
+                const imgHeight = 100; // Fixed height for charts
+
+                // Check if we need a new page
+                if (yPos + imgHeight + 20 > pageHeight - margin) {
+                    doc.addPage();
+                    yPos = margin;
+                }
+
+                // Add chart image
+                doc.addImage(imgData, 'PNG', margin, yPos, imgWidth, imgHeight);
+                yPos += imgHeight + 25;
+            }
+        }
+
+        // Add events timeline
+        if (yPos + 50 > pageHeight - margin) {
+            doc.addPage();
+            yPos = margin;
+        }
+
+        // Add events section with background
+        doc.setFillColor(236, 240, 241);
+        doc.rect(margin, yPos, contentWidth, 80, 'F');
+        
+        doc.setFontSize(16);
+        doc.setTextColor(44, 62, 80);
+        doc.text('Recent Events', margin + 5, yPos + 10);
+        yPos += 20;
+
+        // Add events
+        doc.setFontSize(10);
+        const events = document.querySelectorAll('.event-item');
+        events.forEach(event => {
+            if (yPos + 15 > pageHeight - margin) {
+                doc.addPage();
+                yPos = margin;
+            }
+
+            const date = event.querySelector('.event-date').textContent;
+            const title = event.querySelector('.event-title').textContent;
+            const description = event.querySelector('.event-description').textContent;
+
+            // Add event with icon
+            doc.setTextColor(46, 204, 113);
+            doc.text(date, margin + 5, yPos);
+            doc.setTextColor(44, 62, 80);
+            doc.text(title, margin + 30, yPos);
+            doc.setTextColor(128, 128, 128);
+            doc.text(description, margin + 5, yPos + 7);
+            yPos += 20;
+        });
+
+        // Add footer with gradient line
+        doc.setDrawColor(46, 204, 113);
+        doc.setLineWidth(0.5);
+        doc.line(margin, pageHeight - margin - 10, pageWidth - margin, pageHeight - margin - 10);
+        
+        const footerText = 'Generated by HortAlert - ' + new Date().toLocaleDateString();
+        doc.setFontSize(8);
+        doc.setTextColor(128, 128, 128);
+        doc.text(footerText, margin, pageHeight - margin);
+
+        // Save the PDF
+        doc.save('hortalert-historical-report.pdf');
     }
 }
 
